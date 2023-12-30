@@ -1,0 +1,105 @@
+{
+  "name": "create-tsmod",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Billgo <hi@billgo.me>",
+  "bugs": "https://github.com/billgo/tsmod/issues",
+  "prettier": "prettier-config-devjskit",
+  "license": "MIT",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "types",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "bun": "./dist/index.js",
+      "node": "./dist/index.cjs",
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "prepublishOnly": "bun run build",
+    "test": "bun run test:functionality && bun run test:types",
+    "test:functionality": "bun test",
+    "test:types": "tsc --project tsconfig.test.json",
+    "build": "bunx rimraf dist && bun run build:node && bun run build:bun",
+    "build:bun": "bun run bun.build.mjs",
+    "build:node": "bunx tsup",
+    "example": "bun run --watch examples/index.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@devjskit/copy-files": "^1.0.0",
+    "@devjskit/kill-port": "^1.0.0",
+    "@devjskit/rimraf": "^1.0.0",
+    "@happy-dom/global-registrator": "^12.10.3",
+    "@types/node": "^20.10.6",
+    "@types/web": "^0.0.132",
+    "@typescript-eslint/eslint-plugin": "^6.16.0",
+    "@typescript-eslint/parser": "^6.16.0",
+    "bun-types": "^1.0.20",
+    "cypress": "^13.6.2",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-cypress": "^2.15.1",
+    "eslint-plugin-prettier": "^5.1.2",
+    "prettier": "^3.1.1",
+    "prettier-config-devjskit": "^1.0.0",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "eslintConfig": {
+    "env": {
+      "es2021": true,
+      "node": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:prettier/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "@typescript-eslint/ban-types": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "no-mixed-spaces-and-tabs": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
+      "@typescript-eslint/no-extra-semi": "off",
+      "@typescript-eslint/ban-ts-comment": "off",
+      "@typescript-eslint/no-namespace": "off",
+      "no-case-declarations": "off",
+      "no-extra-semi": "off"
+    },
+    "ignorePatterns": [
+      "examples/**/*",
+      "tests/**/*"
+    ]
+  },
+  "eslintIgnore": [
+    "*.mjs",
+    "lib/*",
+    "dist/*",
+    "build/*",
+    "coverage/*",
+    "fixtures/*",
+    "umd/*"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  }
+}
