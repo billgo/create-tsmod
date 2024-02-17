@@ -1,28 +1,9 @@
 {
-	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"files": {
-		"ignoreUnknown": true,
-		"ignore": [
-			".github",
-			".cache",
-			".next",
-			"node_modules/**",
-			"dist/*",
-			"build/*",
-			"coverage/*",
-			"fixtures/*",
-			"umd/*"
-		]
-	},
+	"$schema": "node_modules/@biomejs/biome/configuration_schema.json",
 	"vcs": {
 		"enabled": true,
 		"clientKind": "git",
 		"useIgnoreFile": true
-	},
-	"javascript": {
-		"parser": {
-			"unsafeParameterDecoratorsEnabled": true
-		}
 	},
 	"organizeImports": {
 		"enabled": true

@@ -1,5 +1,2 @@
-[install]
-registry = { url = "https://registry.npmjs.org" }
-
 [test]
 preload = "./tests/setupTests.tsx"

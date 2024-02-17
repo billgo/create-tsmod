@@ -28,9 +28,9 @@
     "test": "bun run test:functionality && bun run test:types",
     "test:functionality": "bun test",
     "test:types": "tsc --project tsconfig.test.json",
-    "build": "bunx rimraf dist && bun run build:node && bun run build:bun",
+    "build": "bunx rimraf dist && bun run build:esm && bun run build:bun",
     "build:bun": "bun run bun.build.mjs",
-    "build:node": "bunx tsup",
+    "build:esm": "bunx tsup",
     "example": "bun run --watch examples/index.ts"
   },
   "dependencies": {},
